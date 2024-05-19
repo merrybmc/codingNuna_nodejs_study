@@ -16,13 +16,30 @@ async function run() {
   //   const userData = await users.insertOne({ name: 'bmc', age: 30 });
   //   console.log('result', userData);
 
-  const userList = [
-    { name: 'bmc', age: 30 },
-    { name: 'jessica', age: 25 },
-  ];
+  // 데이터 여러 개 추가
+  //   const userList = [
+  //     { name: 'bmc', age: 30 },
+  //     { name: 'jessica', age: 25 },
+  //   ];
 
-  const userListCreate = await users.insertMany(userList);
-  console.log(userListCreate);
+  //   const userListCreate = await users.insertMany(userList);
+  //   console.log(userListCreate);
+
+  // 모든 데이터 가져오기
+  //   const findAll = await users.find().toArray();
+  //   console.log(findAll);
+
+  // key 값을 통해 조건에 해당하는 제일 앞의 데이터 1개 찾기
+  //   const findUser = await users.findOne({ name: 'bmc' });
+  //   console.log(findUser);
+
+  // 조건에 해당하는 모든 데이터 가져오기
+  // Query Operation $gt: number -> 이상의 값 찾기
+  // Reference
+  // https://www.w3schools.com/mongodb/mongodb_query_operators.php
+  // https://www.mongodb.com/docs/manual/reference/operator/query/
+  const findAllUser = await users.find({ age: { $gt: 20 } }).toArray();
+  console.log(findAllUser);
 }
 
 run();
