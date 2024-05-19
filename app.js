@@ -45,6 +45,10 @@ async function run() {
   // parameter 1 - 조건, parameter 2 - 수정할 데이터
   const updateUser = await users.updateOne({ age: 'bmc' }, { $set: { age: 17 } });
   console.log(updateUser);
+
+  // delete 데이터 삭제
+  const deleteUser = await users.deleteMany({ age: { $gt: 20 } });
+  console.log(deleteUser);
 }
 
 run();
