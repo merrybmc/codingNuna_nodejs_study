@@ -38,8 +38,13 @@ async function run() {
   // Reference
   // https://www.w3schools.com/mongodb/mongodb_query_operators.php
   // https://www.mongodb.com/docs/manual/reference/operator/query/
-  const findAllUser = await users.find({ age: { $gt: 20 } }).toArray();
-  console.log(findAllUser);
+  //   const findAllUser = await users.find({ age: { $gt: 20 } }).toArray();
+  //   console.log(findAllUser);
+
+  // update 데이터 수정
+  // parameter 1 - 조건, parameter 2 - 수정할 데이터
+  const updateUser = await users.updateOne({ age: 'bmc' }, { $set: { age: 17 } });
+  console.log(updateUser);
 }
 
 run();
