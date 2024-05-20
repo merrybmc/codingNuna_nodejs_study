@@ -55,8 +55,11 @@ async function run() {
   //   console.log(userData);
  */
 
+  // DB의 Collection 생성
+  const inventory = database.collection('inventory2');
+
   // 문제 1. insertOne
-  // const userData = users.insertOne({
+  // const userData = inventory.insertOne({
   //   item: 'canvas',
   //   qty: 100,
   //   tags: ['cotton'],
@@ -64,11 +67,48 @@ async function run() {
   // });
 
   // 문제 2. insertMany
-  const userManyData = users.insertMany([
-    { item: 'journal', qty: 25, tags: ['blank', 'red'], size: { h: 14, w: 21, uom: 'cm' } },
-    { item: 'mat', qty: 85, tags: ['gray'], size: { h: 27.9, w: 35.5, uom: 'cm' } },
-    { item: 'mousepad', qty: 25, tags: ['gel', 'blue'], size: { h: 19, w: 22.85, uom: 'cm' } },
-  ]);
+  // const userManyData = inventory.insertMany([
+  //   { item: 'journal', qty: 25, tags: ['blank', 'red'], size: { h: 14, w: 21, uom: 'cm' } },
+  //   { item: 'mat', qty: 85, tags: ['gray'], size: { h: 27.9, w: 35.5, uom: 'cm' } },
+  //   { item: 'mousepad', qty: 25, tags: ['gel', 'blue'], size: { h: 19, w: 22.85, uom: 'cm' } },
+  // ]);
+
+  // 문제 3. find
+  // const readUser = await inventory.find().toArray();
+  // console.log(readUser);
+
+  // 문제 4. find condition
+  // const userManyData = await inventory.insertMany([
+  //   { item: 'journal', qty: 25, size: { h: 14, w: 21, uom: 'cm' }, status: 'A' },
+  //   { item: 'notebook', qty: 50, size: { h: 8.5, w: 11, uom: 'in' }, status: 'B' },
+  //   { item: 'paper', qty: 50, size: { h: 8.5, w: 11, uom: 'in' }, status: 'D' },
+  //   { item: 'planner', qty: 75, size: { h: 22.85, w: 30, uom: 'cm' }, status: 'D' },
+  //   { item: 'postcard', qty: 45, size: { h: 10, w: 15.25, uom: 'cm' }, status: 'A' },
+  // ]);
+
+  // const findUserCondition = await inventory.find({ status: 'D' }).toArray();
+
+  // 문제 5. find condition
+  // const findUserCondition = await inventory.find({ status: 'A', qty: 50 }).toArray();
+
+  // 문제 6. query operator $in
+  // const findUserCondition = await inventory.find({ status: { $in: ['A', 'B'] } }).toArray();
+
+  // 문제 7. query operator $lt
+  // const findUserCondition = await inventory.find({ status: 'A', qty: { $lt: 30 } }).toArray();
+
+  // 문제 8. query operator $or
+  // const findUserCondition = await inventory
+  //   .find({ $or: [{ status: 'A' }, { qty: { $lt: 30 } }] })
+  //   .toArray();
+
+  // 문제 9. nested field
+  // const findUserCondition = await inventory.find({ 'size.uom': 'in' }).toArray();
+
+  // 문제 10.nested field, query operator $gt
+  // const findUserCondition = await inventory.find({ 'size.h': { $gt: 10 } }).toArray();
+
+  console.log(findUserCondition);
 }
 
 run();
