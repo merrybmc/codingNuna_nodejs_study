@@ -11,7 +11,7 @@ async function run() {
   const database = client.db('firstDB2');
   // DB의 Collection 생성
   const users = database.collection('users2');
-
+  /**
   // create 데이터 추가
   // const userData = await users.insertOne({ name: 'bmc', age: 30 });
   // console.log('result', userData);
@@ -51,8 +51,24 @@ async function run() {
   // console.log(deleteUser);
 
   // project({ key: 0 }) - 해당 키 값은 제외하고 데이터 보여주기
-  const userData = await users.find({ name: 'bmc' }).project({ _id: 0 }).toArray();
-  console.log(userData);
+  //   const userData = await users.find({ name: 'bmc' }).project({ _id: 0 }).toArray();
+  //   console.log(userData);
+ */
+
+  // 문제 1. insertOne
+  // const userData = users.insertOne({
+  //   item: 'canvas',
+  //   qty: 100,
+  //   tags: ['cotton'],
+  //   size: { h: 28, w: 35.5, uom: 'cm' },
+  // });
+
+  // 문제 2. insertMany
+  const userManyData = users.insertMany([
+    { item: 'journal', qty: 25, tags: ['blank', 'red'], size: { h: 14, w: 21, uom: 'cm' } },
+    { item: 'mat', qty: 85, tags: ['gray'], size: { h: 27.9, w: 35.5, uom: 'cm' } },
+    { item: 'mousepad', qty: 25, tags: ['gel', 'blue'], size: { h: 19, w: 22.85, uom: 'cm' } },
+  ]);
 }
 
 run();
