@@ -55,7 +55,6 @@ async function run() {
   //   console.log(userData);
  */
 
-  // DB의 Collection 생성
   const inventory = database.collection('inventory2');
 
   // 문제 1. insertOne
@@ -108,7 +107,26 @@ async function run() {
   // 문제 10.nested field, query operator $gt
   // const findUserCondition = await inventory.find({ 'size.h': { $gt: 10 } }).toArray();
 
-  console.log(findUserCondition);
+  // console.log(findUserCondition);
+
+  const student = database.collection('student2');
+
+  // const createStudents = await student.insertMany([
+  //   { _id: 1, test1: 95, test2: 92, test3: 90, modified: new Date('01/05/2020') },
+  //   { _id: 2, test1: 98, test2: 100, test3: 102, modified: new Date('01/05/2020') },
+  //   { _id: 3, test1: 95, test2: 100, test3: 110, modified: new Date('01/04/2020') },
+  // ]);
+
+  // 문제 11. update
+  // const updateStudent = await student.updateOne({ _id: 3 }, { $set: { test3: 98 } });
+
+  // 문제 12. update, create field
+  // const updateStudent = await student.updateMany(
+  //   {},
+  //   { $set: { test1: 10 }, $set: { status: 'modified' } }
+  // );
+
+  console.log(updateStudent);
 }
 
 run();
