@@ -117,16 +117,23 @@ async function run() {
   //   { _id: 3, test1: 95, test2: 100, test3: 110, modified: new Date('01/04/2020') },
   // ]);
 
-  // 문제 11. update
+  // 문제 11. updateOne
   // const updateStudent = await student.updateOne({ _id: 3 }, { $set: { test3: 98 } });
 
-  // 문제 12. update, create field
+  // 문제 12. updateMany, create field
   // const updateStudent = await student.updateMany(
   //   {},
   //   { $set: { test1: 10 }, $set: { status: 'modified' } }
   // );
+  // console.log(updateStudent);
 
-  console.log(updateStudent);
+  // 문제 13. deleteOne
+  // const deleteStudent = await student.deleteOne({ test2: 92 });
+
+  // 문제 14. deleteMany
+  const deleteStudent = await student.deleteMany({ test1: 0 });
+
+  console.log(deleteStudent);
 }
 
 run();
